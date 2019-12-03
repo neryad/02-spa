@@ -4,6 +4,10 @@ body{
 .main-container{
   margin-top: 20px;
 }
+
+.img-logo{
+  width: 120px;
+}
 /*Animationss*/
 .animated {
     -webkit-animation-duration: 1s;

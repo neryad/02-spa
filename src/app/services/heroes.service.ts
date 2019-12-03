@@ -64,15 +64,19 @@ export class HeroesService {
     console.log("Servicio listo");
   }
 
-  getHeroes(){
+  getHeroes() {
       return this.heroes;
+  }
+
+  getHeroe(idx: string) {
+    return this.heroes[idx];
   }
 }
 
-export interface Heroe{
-    nombre:  string;
+export interface Heroe {
+    nombre: string;
     bio: string;
-    img:  string;
-    aparicion:  string;
+    img: string;
+    aparicion: string;
     casa: string;
 }
