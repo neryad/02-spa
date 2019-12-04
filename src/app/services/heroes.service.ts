@@ -54,7 +54,7 @@ export class HeroesService {
     {
       nombre: "Wolverine",
       bio:
-        "En el universo ficticio de Marvel, Wolverine posee poderes regenerativos que pueden curar cualquier herida, por mortal que ésta sea, además ese mismo poder hace que sea inmune a cualquier enfermedad existente en la Tierra y algunas extraterrestres . Posee también una fuerza sobrehumana, que si bien no se compara con la de otros superhéroes como Hulk, sí sobrepasa la de cualquier humano.",
+        "En el universo ficticio de Marvel, Wolverine posee poderes regenerativos que pueden curar cualquier herida,  por mortal que ésta sea, además ese mismo poder hace que sea inmune a cualquier enfermedad existente en la Tierra y algunas extraterrestres . Posee también una fuerza sobrehumana, que si bien no se compara con la de otros superhéroes como Hulk, sí sobrepasa la de cualquier humano.",
       img: "assets/img/wolverine.png",
       aparicion: "1974-11-01",
       casa: "Marvel"
@@ -65,19 +65,21 @@ export class HeroesService {
   }
 
   getHeroes() {
-      return this.heroes;
+    return this.heroes;
   }
 
   getHeroe(idx: string) {
     return this.heroes[idx];
   }
 
-  buscarHeroes(termino: string ): Heroe[] {
-    let heroesArr:Heroe[] = [];
+  buscarHeroes(termino: string): Heroe[] {
+    const heroesArr: Heroe[] = [];
     termino.toLowerCase();
-    for ( let heroe of this.heroes) {
-      let nombre = heroe.nombre.toLowerCase();
-      if ( nombre.indexOf( termino ) >= 0 ) {
+    for (const i = 0; i < this.heroes.length; ) {
+      const heroe = this.heroes[i];
+      const nombre = heroe.nombre.toLowerCase();
+      if (nombre.indexOf(termino) >= 0) {
+        heroe.idx = i;
         heroesArr.push(heroe);
       }
     }
@@ -92,4 +94,5 @@ export interface Heroe {
     img: string;
     aparicion: string;
     casa: string;
+    idx?: number;
 }
